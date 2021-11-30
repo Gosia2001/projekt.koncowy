@@ -1,1 +1,1 @@
-print('poczatek')
+print('123')
