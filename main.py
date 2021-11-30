@@ -1,1 +1,1 @@
-print('poczatek')
+def funkcja(z):
