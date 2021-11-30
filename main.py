@@ -1,1 +1,1 @@
-def funkcja(z):
+print('qwerty')
