@@ -1,1 +1,1 @@
-print('123')
+def funkcja(z):
