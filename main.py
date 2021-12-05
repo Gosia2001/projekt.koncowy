@@ -17,19 +17,24 @@ elif M2 > 5:
 else:
     print('Podano masę drugiej kulki:', M2)
 
-print('Podaj szybkość początkową pierwszej kulki w:')
+print('Podaj szybkość początkową pierwszej kulki od 1 do 10 metrów na sekundę:')
 V1 = int(input())
-print('Podaj szybkość początkową drugiej kulki:')
+print('Podaj szybkość początkową drugiej kulki od 1 do 10 metrów na sekundę:')
 V2 = int(input())
 if V1 < 0:
     print('Podano za małą prędkość')
 elif V1 > 10:
     print( 'Podano za dużą wartość')
 else:
-    print('Podano wartość szybkości pierwszej kulki:', V1)
+    print('Podano szybkości pierwszej kulki:', V1)
+
 if V2 < 0:
     print('Podano za małą prędkość')
 elif V2 > 10:
     print( 'Podano za dużą wartość')
 else:
-    print('Podano wartość szybkości drugiej kulki:', V2)
+    print('Podano szybkości drugiej kulki:', V2)
+V1k = V1*(M1-M2)/(M1+M2)+V2*(2*M2)/(M1+M2)
+print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
+V2k = V1*(2*M1)/(M1+M2)+V2*(M2-M1)/(M1+M2)
+print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
