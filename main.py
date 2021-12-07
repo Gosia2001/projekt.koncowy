@@ -38,4 +38,4 @@ V1k = V1*(M1-M2)/(M1+M2)+V2*(2*M2)/(M1+M2)
 print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
 V2k = V1*(2*M1)/(M1+M2)+V2*(M2-M1)/(M1+M2)
 print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
-# prędkość V1k powinna być na "-" ponieważ porusza się po osi X w przeciwnym kierunku
+# prędkość V1k powinna być na "-" ponieważ porusza się po osi X w przeciwnym kierunku.
