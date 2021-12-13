@@ -55,8 +55,7 @@ t2.color('blue')
 t2.backward(500)
 t2.speed(1)
 
-cos = screen.getcarvans().findoverlapping()
-if len(cos) == 0:
+if t2.position == t1.position :
     t1.backward(100)
     t2.forward(100)
 
