@@ -1,3 +1,4 @@
+import turtle
 print('Podaj mase pierwszej kulki od 1 do 5 kilogramów')
 M1 = int(input())
 
@@ -39,3 +40,25 @@ print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
 V2k = V1*(2*M1)/(M1+M2)+V2*(M2-M1)/(M1+M2)
 print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
 # prędkość V1k powinna być na "-" ponieważ porusza się po osi X w przeciwnym kierunku
+
+t1 = turtle.Turtle()
+t1.shape('turtle')
+t1.color('green')
+t1.forward(100)
+t1.speed(1)
+
+
+t2 = turtle.Turtle()
+t2.setposition(200,0)
+t2.shape('turtle')
+t2.color('blue')
+t2.backward(500)
+t2.speed(1)
+
+cos = screen.getcarvans().findoverlapping()
+if len(cos) == 0:
+    t1.backward(100)
+    t2.forward(100)
+
+screen = turtle.getscreen()
+turtle.exitonclick()
