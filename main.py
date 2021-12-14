@@ -41,26 +41,24 @@ V2k = V1*(2*M1)/(M1+M2)+V2*(M2-M1)/(M1+M2)
 print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
 # prędkość V1k powinna być na "-" ponieważ porusza się po osi X w przeciwnym kierunku
 
-
 t1 = turtle.Turtle()
 t1.shape('turtle')
 t1.color('green')
 t1.forward(100)
-t1.speed(V1)
-
+t1.speed(1)
+x1, y1 = t1.position()
 
 t2 = turtle.Turtle()
 t2.setposition(200,0)
 t2.shape('turtle')
 t2.color('blue')
-t2.backward(200)
-t2.speed(V2)
+t2.backward(500)
+t2.speed(1)
+x2, y2 = t2.position()
 
-if t2.position == t1.position:
-    t1.backward(100)
-    t1.speed(V1k)
-    t2.forward(100)
-    t2.speed(V2k)
+if ((x1) - (x2)) < 10:
+    t1.backward()
+    t2.forward()
 
 screen = turtle.getscreen()
 turtle.exitonclick()
