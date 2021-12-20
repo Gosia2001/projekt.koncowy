@@ -1,4 +1,6 @@
 import turtle
+from turtle import TurtleScreen
+from random import seed, randint
 print('Podaj mase pierwszej kulki od 1 do 5 kilogramów')
 M1 = int(input())
 
@@ -80,30 +82,48 @@ podloga.pendown()
 podloga.goto(250,-100)
 podloga.hideturtle()
 
+DELAY = 100
 t1 = turtle.Turtle()
+t1.goto(-200,0)
 t1.shape('turtle')
 t1.color('green')
-t1.forward(1000)
-t1.speed(0)
-t1.width(20)
+t2 = turtle.Turtle()
+t2.goto(200,0)
+t2.shape('turtle')
+t2.color('blue')
+#kombinowanie z tym by oba sie ruszyly w tym samym czasie. ogolnie nic nie działa i wyskakują bledy, ale sklejam rzeczy
+#które wyszukałam i mogą mieć jakis sens
 
-if xt1.xcor() >= 250 or x <= -250:
-    t1.left(180)
+t1.speed(V1)
+t2.speed(V2)
+def movet1():
+    t1.forward(t1.speed())
+    turtle.ontimer(movet1, DELAY)
+def movet2():
+    if t1.position() != t2.position():
+        t2.setheading(t2.towards(t1))
+        t2.forward(t2.speed())
+        turtle.ontimer(movet2, DELAY)
 
+#zderzenie na podstawie gotowego programu co ci wysłałam
+t1.speed(V1k)
+t2.speed(V2k)
+def is_collided_with(a,b):
+    abs(a.xcor() - b.xcor()) < 40
+def follow_runner():
+    if is_collided_with(t1, t2):
+        t1.setheading(0) and t2.setheading(200)
+        t1.speed(V1k) and t2.speed(V2k)
+movet1()
+movet2()
+#follow_runner()
+is_collided_with(t1, t2)
 
-
-#t2 = turtle.Turtle()
-#t2.setposition(200,0)
-#t2.shape('turtle')
-#t2.color('blue')
-#t2.backward(200)
-#t2.speed(V2)
-
-#if t2.position == t1.position:
-#    t1.backward(100)
- #   t1.speed(V1k)
-  #  t2.forward(100)
-   # t2.speed(V2k)
+if is_collided_with(t1, t2):
+    t1.backward(100)
+    t1.speed(V1k)
+    t2.forward(100)
+    t2.speed(V2k)
 
 screen = turtle.getscreen()
 turtle.exitonclick()
