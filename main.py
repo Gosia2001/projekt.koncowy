@@ -1,6 +1,4 @@
 import turtle
-from turtle import TurtleScreen
-from random import seed, randint
 print('Podaj mase pierwszej kulki od 1 do 5 kilogramów')
 M1 = int(input())
 
@@ -37,93 +35,75 @@ elif V2 > 10:
     print( 'Podano za dużą wartość')
 else:
     print('Podano szybkości drugiej kulki:', V2)
-V1k = V1*(M1-M2)/(M1+M2)+V2*(2*M2)/(M1+M2)
-print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
-V2k = V1*(2*M1)/(M1+M2)+V2*(M2-M1)/(M1+M2)
-print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
-# prędkość V1k powinna być na "-" ponieważ porusza się po osi X w przeciwnym kierunku
 
-turtle.title('Zderzenia centralna')
 
-#ściany
-sciana1 = turtle.Turtle()
-sciana1.color('black')
-sciana1.pensize(5)
-sciana1.penup()
-sciana1.goto(250,-100)
-sciana1.pendown()
-sciana1.goto(250,100)
-sciana1.hideturtle()
+wn = turtle.Screen()
+wn.bgcolor("lightblue")
 
-sciana2 = turtle.Turtle()
-sciana2.color('black')
-sciana2.pensize(5)
-sciana2.penup()
-sciana2.goto(-250,100)
-sciana2.pendown()
-sciana2.goto(-250,-100)
-sciana2.hideturtle()
+#Draw border
+mypen = turtle.Turtle()
+mypen.penup()
+mypen.pencolor('black')
+mypen.setposition(-300,-300)
+mypen.pendown()
+mypen.pensize(3)
+for side in range (4):
+    mypen.forward(600)
+    mypen.left(90)
+mypen.hideturtle()
 
-sufit = turtle.Turtle()
-sufit.color('black')
-sufit.pensize(5)
-sufit.penup()
-sufit.goto(-250,100)
-sufit.pendown()
-sufit.goto(250,100)
-sufit.hideturtle()
+#Create player 1
+player = turtle.Turtle()
+player.penup()
+player.setposition(200,0)
+player.setheading(180)
+player.color("red")
+player.shape("turtle")
 
-podloga = turtle.Turtle()
-podloga.color('black')
-podloga.pensize(5)
-podloga.penup()
-podloga.goto(-250,-100)
-podloga.pendown()
-podloga.goto(250,-100)
-podloga.hideturtle()
+player.speed(V1)
 
-DELAY = 100
-t1 = turtle.Turtle()
-t1.goto(-200,0)
-t1.shape('turtle')
-t1.color('green')
-t2 = turtle.Turtle()
-t2.goto(200,0)
-t2.shape('turtle')
-t2.color('blue')
-#kombinowanie z tym by oba sie ruszyly w tym samym czasie. ogolnie nic nie działa i wyskakują bledy, ale sklejam rzeczy
-#które wyszukałam i mogą mieć jakis sens
+#Create player 2
+player2 = turtle.Turtle()
+player2.penup()
+player2.setposition(-200,0)
+player2.color("aqua")
+player2.shape("turtle")
 
-t1.speed(V1)
-t2.speed(V2)
-def movet1():
-    t1.forward(t1.speed())
-    turtle.ontimer(movet1, DELAY)
-def movet2():
-    if t1.position() != t2.position():
-        t2.setheading(t2.towards(t1))
-        t2.forward(t2.speed())
-        turtle.ontimer(movet2, DELAY)
+player2.speed(V2)
 
-#zderzenie na podstawie gotowego programu co ci wysłałam
-t1.speed(V1k)
-t2.speed(V2k)
-def is_collided_with(a,b):
-    abs(a.xcor() - b.xcor()) < 40
-def follow_runner():
-    if is_collided_with(t1, t2):
-        t1.setheading(0) and t2.setheading(200)
-        t1.speed(V1k) and t2.speed(V2k)
-movet1()
-movet2()
-#follow_runner()
-is_collided_with(t1, t2)
+def definicja(self, V1, V2):
+    self.V1 = V1
+    self.V2 = V2
 
-if is_collided_with(t1, t2):
-    t1.backward(100)
-    t1.speed(V1k)
-    t2.forward(100)
-    t2.speed(V2k)
+def update(V1,V2):
+    V1 = V1k
+    V2 = V2k
 
-screen = turtle.getscreen()
-turtle.exitonclick()
+zolwie = []
+zolwie.append(player)
+zolwie.append(player2)
+
+while True:
+    player.forward(player.speed())
+    player2.forward(player2.speed())
+
+    V1k = V1 * (M1 - M2) / (M1 + M2) + V2 * (2 * M2) / (M1 + M2)
+    V2k = V1 * (2 * M1) / (M1 + M2) + V2 * (M2 - M1) / (M1 + M2)
+
+    for zolw in zolwie:
+        zolw.update()
+
+    if player2.xcor() > (player.xcor() - 10 ):
+        player.left(180)
+        player.speed(V1k)
+        player2.right(180)
+        player2.speed(V2k)
+        print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
+        print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
+
+    #Bouandary
+    if player.xcor() > 300 or player.xcor() < -300:
+        player.right(180)
+    #Bouandary2
+    if player2.xcor() > 300 or player2.xcor() < -300:
+        player2.right(180)
