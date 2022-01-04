@@ -40,7 +40,7 @@ else:
 wn = turtle.Screen()
 wn.bgcolor("lightblue")
 
-#Draw border
+#ściany
 mypen = turtle.Turtle()
 mypen.penup()
 mypen.pencolor('black')
@@ -52,7 +52,7 @@ for side in range (4):
     mypen.left(90)
 mypen.hideturtle()
 
-#Create player 1
+#Żółw 1
 player = turtle.Turtle()
 player.penup()
 player.setposition(200,0)
@@ -62,7 +62,7 @@ player.shape("turtle")
 
 player.speed(V1)
 
-#Create player 2
+#Żółw 2
 player2 = turtle.Turtle()
 player2.penup()
 player2.setposition(-200,0)
@@ -70,18 +70,6 @@ player2.color("aqua")
 player2.shape("turtle")
 
 player2.speed(V2)
-
-def definicja(self, V1, V2):
-    self.V1 = V1
-    self.V2 = V2
-
-def update(V1,V2):
-    self.V1 = V1k
-    self.V2 = V2k
-
-zolwie = []
-zolwie.append(player)
-zolwie.append(player2)
 
 a = 1
 
