@@ -57,19 +57,20 @@ player = turtle.Turtle()
 player.penup()
 player.setposition(200,0)
 player.setheading(180)
-player.color("red")
+player.color("purple")
 player.shape("turtle")
-
 player.speed(V1)
 
 #Żółw 2
 player2 = turtle.Turtle()
 player2.penup()
 player2.setposition(-200,0)
-player2.color("aqua")
+player2.color("orange")
 player2.shape("turtle")
-
 player2.speed(V2)
+
+
+
 
 a = 1
 
@@ -80,7 +81,7 @@ while True:
     V1k = V1 * (M1 - M2) / (M1 + M2) + V2 * (2 * M2) / (M1 + M2)
     V2k = V1 * (2 * M1) / (M1 + M2) + V2 * (M2 - M1) / (M1 + M2)
 
-
+    #Zderzenia
     if player2.xcor() > (player.xcor() - 10 ):
         player.left(180)
         player.speed(V1k)
@@ -93,9 +94,8 @@ while True:
         V2 = V2k
         a += 1
 
-    #Bouandary
+    #Od ścian
     if player.xcor() > 300 or player.xcor() < -300:
         player.right(180)
-    #Bouandary2
     if player2.xcor() > 300 or player2.xcor() < -300:
         player2.right(180)
