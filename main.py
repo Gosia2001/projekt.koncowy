@@ -76,12 +76,14 @@ def definicja(self, V1, V2):
     self.V2 = V2
 
 def update(V1,V2):
-    V1 = V1k
-    V2 = V2k
+    self.V1 = V1k
+    self.V2 = V2k
 
 zolwie = []
 zolwie.append(player)
 zolwie.append(player2)
+
+a = 1
 
 while True:
     player.forward(player.speed())
@@ -90,16 +92,18 @@ while True:
     V1k = V1 * (M1 - M2) / (M1 + M2) + V2 * (2 * M2) / (M1 + M2)
     V2k = V1 * (2 * M1) / (M1 + M2) + V2 * (M2 - M1) / (M1 + M2)
 
-    for zolw in zolwie:
-        zolw.update()
 
     if player2.xcor() > (player.xcor() - 10 ):
         player.left(180)
         player.speed(V1k)
         player2.right(180)
         player2.speed(V2k)
+        print('Zderzenie:', a)
         print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
         print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
+        V1 = V1k
+        V2 = V2k
+        a += 1
 
     #Bouandary
     if player.xcor() > 300 or player.xcor() < -300:
