@@ -36,7 +36,7 @@ elif V2 > 10:
 else:
     print('Podano szybkości drugiej kulki:', V2)
 
-
+M3 = int(input())
 wn = turtle.Screen()
 wn.bgcolor("lightblue")
 
@@ -69,30 +69,39 @@ player2.color("orange")
 player2.shape("turtle")
 player2.speed(V2)
 
+#Żółw 3
+player3 = turtle.Turtle()
+player3.penup()
+player3.color("pink")
+player3.shape("turtle")
+V3 = 0
+player3.speed(V3)
 
+def velocity(a,b,m,n):
+    V1k = a * (m - n) / (m + n) + b * (2 * n) / (m + n)
+    V2k = a * (2 * m) / (m + n) + b * (n - m) / (m + n)
+    return V1k, V2k
 
-
-a = 1
+i = 1
 
 while True:
     player.forward(player.speed())
     player2.forward(player2.speed())
-
-    V1k = V1 * (M1 - M2) / (M1 + M2) + V2 * (2 * M2) / (M1 + M2)
-    V2k = V1 * (2 * M1) / (M1 + M2) + V2 * (M2 - M1) / (M1 + M2)
+    player3.forward(player3.speed())
 
     #Zderzenia
-    if player2.xcor() > (player.xcor() - 10 ):
-        player.left(180)
-        player.speed(V1k)
+    if player2.xcor() > (player3.xcor() - 10 ):
+        velocity(V3,V2,M3,M2)
+        player3.left(180)
+        player3.speed(V1k)
         player2.right(180)
         player2.speed(V2k)
-        print('Zderzenie:', a)
+        print('Zderzenie:', i)
         print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
         print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
-        V1 = V1k
+        V3 = V1k
         V2 = V2k
-        a += 1
+        i += 1
 
     #Od ścian
     if player.xcor() > 300 or player.xcor() < -300:
