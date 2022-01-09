@@ -72,18 +72,13 @@ player2.speed(V2)
 #Żółw 3
 player3 = turtle.Turtle()
 player3.penup()
+player3.setposition(0,0)
 player3.color("pink")
 player3.shape("turtle")
-V3 = 0
+V3= int(input())
 player3.speed(V3)
 
-def velocity(a,b,m,n):
-    V1k = a * (m - n) / (m + n) + b * (2 * n) / (m + n)
-    V2k = a * (2 * m) / (m + n) + b * (n - m) / (m + n)
-    return V1k, V2k
-
 i = 1
-
 while True:
     player.forward(player.speed())
     player2.forward(player2.speed())
@@ -91,16 +86,31 @@ while True:
 
     #Zderzenia
     if player2.xcor() > (player3.xcor() - 10 ):
-        velocity(V3,V2,M3,M2)
+        Vk1 = abs(V2 * (M2 - M3) / (M2 + M3) + V3 * (2 * M3) / (M2 + M3))
+        Vk2 = abs(V2 * (2 * M2) / (M2 + M3) + V3 * (M3 - M1) / (M1 + M3))
+        player3.setheading(180)
         player3.left(180)
-        player3.speed(V1k)
+        player3.speed(Vk1)
         player2.right(180)
-        player2.speed(V2k)
+        player2.speed(Vk2)
         print('Zderzenie:', i)
-        print('Wartość prędkości końcowej pierwszej kulki wynosi:', V1k)
-        print('Wartość prędkości końcowej drugiej kulki wynosi:', V2k)
-        V3 = V1k
-        V2 = V2k
+        print('Wartość prędkości końcowej pomarańczowego żółwia wynosi:', Vk2)
+        print('Wartość prędkości końcowej różowego żółwia wynosi:', Vk1)
+        V3 = Vk2
+        V2 = Vk1
+        i += 1
+    elif player3.xcor() > (player.xcor() - 10):
+        V1k = abs(V1 * (M1 - M3) / (M1 + M3) + V3 * (2 * M3) / (M1 + M3))
+        V2k = abs(V1 * (2 * M1) / (M1 + M3) + V3 * (M3 - M1) / (M1 + M3))
+        player.left(180)
+        player.speed(V1k)
+        player3.right(180)
+        player3.speed(V2k)
+        print('Zderzenie:', i)
+        print('Wartość prędkości końcowej fioletowego żółwia wynosi:', V1k)
+        print('Wartość prędkości końcowej różowego żółwia wynosi:', V2k)
+        V3 = V2k
+        V1 = V1k
         i += 1
 
     #Od ścian
