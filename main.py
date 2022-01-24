@@ -68,8 +68,8 @@ def zolw(V1, V2, V3, M1, M2, M3):
                 player3.speed(Vk1)
                 player2.speed(Vk2)
             print('Zderzenie:', i)
-            print('Wartość prędkości końcowej pomarańczowego żółwia wynosi:', Vk2)
-            print('Wartość prędkości końcowej różowego żółwia wynosi:', Vk1)
+            print('Wartość prędkości końcowej pomarańczowego żółwia wynosi:', Vk2, "m/s")
+            print('Wartość prędkości końcowej różowego żółwia wynosi:', Vk1, "m/s")
             V3 = Vk2
             V2 = Vk1
             i += 1
@@ -91,8 +91,8 @@ def zolw(V1, V2, V3, M1, M2, M3):
                 player.speed(V1k)
                 player3.speed(V2k)
             print('Zderzenie:', i)
-            print('Wartość prędkości końcowej fioletowego żółwia wynosi:', V1k)
-            print('Wartość prędkości końcowej różowego żółwia wynosi:', V2k)
+            print('Wartość prędkości końcowej fioletowego żółwia wynosi:', V1k, "m/s")
+            print('Wartość prędkości końcowej różowego żółwia wynosi:', V2k, "m/s")
             V3 = V2k
             V1 = V1k
             i += 1
@@ -109,23 +109,23 @@ if __name__ == '__main__':
     root_window.title("Wartości prędkości i masy")
     root_window.geometry("500x500")
 
-    Label(root_window, text="masa pierwszego żółwia:").pack()
+    Label(root_window, text="masa pierwszego żółwia (kg):").pack()
     masa1Entry = Scale(root_window, from_=1, to=5, orient=HORIZONTAL)
     masa1Entry.pack()
-    Label(root_window, text="masa drugiego żółwia:").pack()
+    Label(root_window, text="masa drugiego żółwia (kg):").pack()
     masa2Entry = Scale(root_window, from_=1, to=5, orient=HORIZONTAL)
     masa2Entry.pack()
-    Label(root_window, text="masa trzeciego żółwia:").pack()
+    Label(root_window, text="masa trzeciego żółwia (kg):").pack()
     masa3Entry = Scale(root_window, from_=1, to=5, orient=HORIZONTAL)
     masa3Entry.pack()
 
-    Label(root_window, text="Wartość prędkości pierwszego żółwia:").pack()
+    Label(root_window, text="Wartość prędkości pierwszego żółwia (m/s):").pack()
     predkosc1Entry = Scale(root_window, from_=0, to=10, orient=HORIZONTAL)
     predkosc1Entry.pack()
-    Label(root_window, text="Wartość prędkości drugiego żółwia:").pack()
+    Label(root_window, text="Wartość prędkości drugiego żółwia (m/s):").pack()
     predkosc2Entry = Scale(root_window, from_=0, to=10, orient=HORIZONTAL)
     predkosc2Entry.pack()
-    Label(root_window, text="Wartość prędkości trzeciego żółwia:").pack()
+    Label(root_window, text="Wartość prędkości trzeciego żółwia (m/s):").pack()
     predkosc3Entry = Scale(root_window, from_=0, to=10, orient=HORIZONTAL)
     predkosc3Entry.pack()
 
